@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+<meta name="google-site-verification" content="HgbB1pVA3pHAZ9XUXmZr6qDgqI3O2ZR-w0rPQ96Dy2w">
+<meta name="360-site-verification" content="f4560dc99094b82dee364e4d46aa3a7d">
+<meta name="msvalidate.01" content="F7E37034D1FD49792B4C946E6D3952CF">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前端代码规范 多人协作开发过程中的代码规范就显得尤为重要，并不是说统一之后规范一定就比规范外的语言规范就要好，目的是多人合作开发中统一了规范，代码风格趋向统一。这样在维护项目代码的时候，与别人交接项目后减少沟通和时间成本。 前言 语言规范除了口头约定，可以借助工具来完成约束。工具可以是编辑器层的也可以是代码层的。下面我的阐述我写的语言规范会在在约定中尽量写到我是怎么遵守这些约定，有没有借助工具来实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端代码规范总结">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/前端代码规范总结/index.html">
+<meta property="og:site_name" content="小阁楼">
+<meta property="og:description" content="前端代码规范 多人协作开发过程中的代码规范就显得尤为重要，并不是说统一之后规范一定就比规范外的语言规范就要好，目的是多人合作开发中统一了规范，代码风格趋向统一。这样在维护项目代码的时候，与别人交接项目后减少沟通和时间成本。 前言 语言规范除了口头约定，可以借助工具来完成约束。工具可以是编辑器层的也可以是代码层的。下面我的阐述我写的语言规范会在在约定中尽量写到我是怎么遵守这些约定，有没有借助工具来实">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gitee.com/huangyijian/images/raw/ab3eba4d9622c7bb8afc1a442b0aa657ac2f28ec/gif/document.gif">
+<meta property="og:image" content="https://gitee.com/huangyijian/images/raw/8f80731c971c1c9a5a42ffc148e7aa7d1f5794a4/gif/vscode_code_template.gif">
+<meta property="og:image" content="https://gitee.com/huangyijian/images/raw/2eab344fb6c6b44a1ad74f12c7835bfbeb320a7d/gif/eslintsave.gif">
+<meta property="og:updated_time" content="2019-12-31T02:37:28.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端代码规范总结">
+<meta name="twitter:description" content="前端代码规范 多人协作开发过程中的代码规范就显得尤为重要，并不是说统一之后规范一定就比规范外的语言规范就要好，目的是多人合作开发中统一了规范，代码风格趋向统一。这样在维护项目代码的时候，与别人交接项目后减少沟通和时间成本。 前言 语言规范除了口头约定，可以借助工具来完成约束。工具可以是编辑器层的也可以是代码层的。下面我的阐述我写的语言规范会在在约定中尽量写到我是怎么遵守这些约定，有没有借助工具来实">
+<meta name="twitter:image" content="https://gitee.com/huangyijian/images/raw/ab3eba4d9622c7bb8afc1a442b0aa657ac2f28ec/gif/document.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/31/前端代码规范总结/">
+
+
+
+
+
+  <title>前端代码规范总结 | 小阁楼</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小阁楼</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">意见的小博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/前端代码规范总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="义建">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/companylogo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小阁楼">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端代码规范总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T10:37:18+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/31/前端代码规范总结/" class="leancloud_visitors" data-flag-title="前端代码规范总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2>前端代码规范</h2>
+<p>多人协作开发过程中的代码规范就显得尤为重要，并不是说统一之后规范一定就比规范外的语言规范就要好，目的是多人合作开发中统一了规范，代码风格趋向统一。这样在维护项目代码的时候，与别人交接项目后减少沟通和时间成本。</p>
+<h3>前言</h3>
+<p>语言规范除了口头约定，可以借助工具来完成约束。工具可以是编辑器层的也可以是代码层的。下面我的阐述我写的语言规范会在在约定中尽量写到我是怎么遵守这些约定，有没有借助工具来实现。</p>
+<h3>正文</h3>
+<p>尽量基于主流的语言规范作为一套统一的语言规范，然后基于上面进行改造，改造的过程中不能破坏语言的稳定性，易读性。下文提到的编辑器工具插件都是基于vsCode来进行阐述。</p>
+<h4>注释规范</h4>
+<pre><code>可用工具：JSDOC插件(Document this)和vsCode自带的用户代码片段。
+</code></pre>
+<p>开发者的注释水平的先决条件是代码命名和注释能力，一个好的注释应该让别人一眼就能理解代码的功能作用。jsdoc是前端普遍认可的代码书写规范。使用vscode的朋友可以使用js注释插件Document this来完成注释的模板创建，也可以使用vscode自带的代码片段来完成。也没有什么优劣之分，只是看个人爱好。</p>
+<ul>
+<li>JSDOC</li>
+</ul>
+<p><img src="https://gitee.com/huangyijian/images/raw/ab3eba4d9622c7bb8afc1a442b0aa657ac2f28ec/gif/document.gif" alt="DOcument this"></p>
+<ul>
+<li>Vscode 代码片段</li>
+</ul>
+<p><img src="https://gitee.com/huangyijian/images/raw/8f80731c971c1c9a5a42ffc148e7aa7d1f5794a4/gif/vscode_code_template.gif" alt="Vscode 代码片段"></p>
+<p>有很多的开发者觉得个人写的代码很清晰很优雅，根本不用写注释。其实我个人观点觉得代码写清晰注释这个是基本要求。代码优雅和使用了过多的语法糖之后相反会使别人难以理解。注释本身就是代码的组成部分。</p>
+<p>同时也要避免为了写注释而写注释，一个好的注释不应该是没有用的注释，应该详细描绘其描写的功能函数参数的作用，目的，副作用，缺点，适用范围。</p>
+<h4>单个文件行数限制</h4>
+<p>请限制单个文件代码在300行。</p>
+<ul>
+<li>限制方式：eslint</li>
+<li>解决方法：模块化、组件化</li>
+<li>目的：代码易读性优雅型</li>
+</ul>
+<pre><code>max-lines: [&quot;error&quot;, {&quot;max&quot;: 300, &quot;skipBlankLine&quot;: false, &quot;skipComments&quot;: false}]
+</code></pre>
+<h4>接口规范</h4>
+<p>RestFul Api ---》 使用Post/Get</p>
+<h4>命名规范</h4>
+<h5>约定</h5>
+<ul>
+<li>默认使用驼峰命名(addProject)</li>
+<li>组件的命名首字母需要大写</li>
+<li>css的class名同样推荐使用驼峰命名法(由于Cssmodel的影响，不使用中横线，同时也方便鼠标或者键盘取词)</li>
+<li>常量大写</li>
+<li>尽量全写(使别人观词得义)</li>
+<li>文件名都尽量小写，然后使用下划线作为划分词义</li>
+</ul>
+<h5>可用工具</h5>
+<pre><code>eslint,编辑器代码风格工具Prettier.
+</code></pre>
+<p>推荐的话还是推荐eslint配合vscode保存修正。可以节省不少工作量，如果使用的Prettier，交接项目的时候，对方的电脑的Prettier使用的可能是自定义规则，出来的代码风格又会出现差异。这个只能约束代码层级的代码风格，不过也够了，eslint的代码风格约束是现在主流的前端代码语法检测工具。</p>
+<p><img src="https://gitee.com/huangyijian/images/raw/2eab344fb6c6b44a1ad74f12c7835bfbeb320a7d/gif/eslintsave.gif" alt="eslint保存约束"></p>
+<p><a href="http://eslint.cn/" target="_blank" rel="noopener">Eslint中文网</a> , 驼峰命名法可以使用eslint规则的camelcase来进行约束。</p>
+<h4>typescript</h4>
+<p>前端主流强类型方案。由vscode东家微软开源方案，vscode内置支持，(微软开源还是挺香的)。typescript对于我来说不只是代码类型检查工具，真正吸引我们的应该是其类型提示带来的无数友好代码提示，代码都是有迹可循。2020年了，是时候试用typescript了。</p>
+<p>typescript，检查的代码逻辑层的错误，约束的也是代码逻辑层。</p>
+<p>套用笔者同事的一句话，typescript，一路提示一路TAB,火车带闪电，代码写好了。约束工具也是生产工具。</p>
+<h4>小结</h4>
+<p>以上，皆是笔者对于代码规范进行的一些实践和一些想法。开发前端到现在应该也有三个年头，刚好碰上了前端的繁荣时代，所幸在时代的浪潮下接触了这么多有趣的东西。希望会越来越好。未完</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/export、export-default、exports-、modules-exports四者的区别/" rel="next" title="export、export default、exports 、modules.exports四者的区别">
+                <i class="fa fa-chevron-left"></i> export、export default、exports 、modules.exports四者的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/companylogo.png" alt="义建">
+            
+              <p class="site-author-name" itemprop="name">义建</p>
+              <p class="site-description motion-element" itemprop="description">♤学习♢生活♡工作♧梦想</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huangyijan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:13415843344@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前端代码规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.1.</span> <span class="nav-text">注释规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.2.</span> <span class="nav-text">单个文件行数限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.3.</span> <span class="nav-text">接口规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">约定</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">可用工具</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.5.</span> <span class="nav-text">typescript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.6.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">义建</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("UVgwPveR02fj9IfuWfPIYn3r-gzGzoHsz", "sRxJkwDH6BW7X34zSWDc9Waq");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

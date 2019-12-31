@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+<meta name="google-site-verification" content="HgbB1pVA3pHAZ9XUXmZr6qDgqI3O2ZR-w0rPQ96Dy2w">
+<meta name="360-site-verification" content="f4560dc99094b82dee364e4d46aa3a7d">
+<meta name="msvalidate.01" content="F7E37034D1FD49792B4C946E6D3952CF">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用vue-element-admin 写用户管理端    框架github地址   https://www.bilibili.com/video/av19235761?from=search&amp;amp;seid=14657848923029564329 最近公司接到的项目里面需要快速开发，选了GitHub上面star相当多的一个vue管理后台，用了一下，感觉相当的不错，比我自己做的管理端真的不是差">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初尝vue-element-admin">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/初尝vue-element-admin/index.html">
+<meta property="og:site_name" content="小阁楼">
+<meta property="og:description" content="使用vue-element-admin 写用户管理端    框架github地址   https://www.bilibili.com/video/av19235761?from=search&amp;amp;seid=14657848923029564329 最近公司接到的项目里面需要快速开发，选了GitHub上面star相当多的一个vue管理后台，用了一下，感觉相当的不错，比我自己做的管理端真的不是差">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-19T10:05:22.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初尝vue-element-admin">
+<meta name="twitter:description" content="使用vue-element-admin 写用户管理端    框架github地址   https://www.bilibili.com/video/av19235761?from=search&amp;amp;seid=14657848923029564329 最近公司接到的项目里面需要快速开发，选了GitHub上面star相当多的一个vue管理后台，用了一下，感觉相当的不错，比我自己做的管理端真的不是差">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/15/初尝vue-element-admin/">
+
+
+
+
+
+  <title>初尝vue-element-admin | 小阁楼</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小阁楼</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">意见的小博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/初尝vue-element-admin/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="义建">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/companylogo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小阁楼">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初尝vue-element-admin</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T19:56:18+08:00">
+                2019-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/15/初尝vue-element-admin/" class="leancloud_visitors" data-flag-title="初尝vue-element-admin">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3>使用vue-element-admin 写用户管理端</h3>
+<hr>
+<blockquote>
+<ul>
+<li>框架github地址</li>
+</ul>
+</blockquote>
+<p>https://www.bilibili.com/video/av19235761?from=search&amp;seid=14657848923029564329</p>
+<p>最近公司接到的项目里面需要快速开发，选了GitHub上面star相当多的一个vue管理后台，用了一下，感觉相当的不错，比我自己做的管理端真的不是差一丁半点（尴尬状！），这个题外，这个后台确实很方便，该有基本都有了，权限管理，各种表格，各种组件都是开箱即用。感觉非常成熟，值得深度学习。</p>
+<h3>1、项目初始化</h3>
+<p>项目的提供了非常简洁的模板和一个集成所有组件的demo
+可以分别clone下来进行分开运行进行对照开发
+初始化方法我从官方copy下来</p>
+<h4>集成模板下载 vue-element-admin</h4>
+<pre><code># clone the project
+git clone https://github.com/PanJiaChen/vue-element-admin.git
+
+# install dependency
+npm install
+
+# develop
+npm run dev
+</code></pre>
+<h4>基础模板下载 vueAdmin-template</h4>
+<pre><code># Clone project
+git clone https://github.com/PanJiaChen/vueAdmin-template.git
+
+# Install dependencies
+npm install
+
+# serve with hot reload at localhost:9528
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+</code></pre>
+<h3>2、项目权限问题和路由页面问题</h3>
+<p>这次开发的项目比较小，没有权限管理，使用的cookie,session保存验证信息，我把权限管理的文件全部注释掉了。其他类似登录过期的时候都自己使用代码来实现跳转。</p>
+<p>路由的页面这里和平时vue-cli脚手架的架构的项目不太一样。它的路由页面设置在route文件夹里面的index文件。</p>
+<p>在这里就可以设置了路由的页面路径，和路径名称，</p>
+<pre><code> {
+   path: '/',//路由的父级路径，就是地址栏上面后面的尾缀
+   component: Layout,//所在页面组件，这个可以填默认，layout是外部的框架，就像frame层吧。
+   redirect: '/person/index',//可选，是否重定向
+   name: 'person',//路由名称
+   hidden: true,//这个属性就不太清楚，晚点我再看看吧
+   children: [{
+     path: 'index',这里的是子组件的路径，是跟在父组件后面的尾缀
+     component: () =&gt; import('@/views/table/index')这个是/person/index所访问的路由页面路径，在这里设置你的路由页面路径，
+   }]
+ },
+</code></pre>
+<h3>3、页面的具体操作</h3>
+<p>其实按照他模板的具体模板代码就能知道具体怎么使用，跟普通的vue的项目是一样的，使用的element UI ，具体的各个组件按照他那个集成的管理端的各个组件或者直接查看element ui的框架的API，可以快速上手。
+因为element UI本身也是为管理端打造的，所以并不兼容手机端。项目从构建到项目完成两天时间就做完了，相当的快速。以后想偷懒估计都用这个框架了。</p>
+<hr>
+<h4>2019年6月19日更新</h4>
+<p>  哈哈，太久没更新被吐槽了，最近刚忙完学业和工作的问题，刚抽出空来，抱歉呐米娜桑。<br>
+  几个月下来，vue-element-admin 由于vue-cli 3.0的出来也更新了，脚手架的代码结构出现了不小的变化，新的代码结构上用户的自定义配置都在vue.config.js文件里面。简洁了很多东西。<br>
+  这里也写一些各个模块的作用，即/src文件夹下的各个模块在项目中的功能。具体的项目如下：
+&lt;img src=&quot;https://raw.githubusercontent.com/huangyijan/ImageRepository/master/Image/7.png&quot; /&gt;<br>
+上图中可以看到这些文件夹和文件都是完整的项目目录下面的文件：</p>
+<blockquote>
+<ul>
+<li>api</li>
+</ul>
+</blockquote>
+<p>该文件是存放项目的请求使用的请求，各个ajax请求的统一管理，统一的模块化和之后的维护的统一规范。好处多多。</p>
+<blockquote>
+<ul>
+<li>asset</li>
+</ul>
+</blockquote>
+<p>静态资源目录，assert与原来外部的static文件夹的有一个区别是在该文件夹里面的文件会被统一打包编译。而static里面的文件是不会编译的，现在public是原来的static的文件夹,用来存放静态的大文件.</p>
+<blockquote>
+<ul>
+<li>components</li>
+</ul>
+</blockquote>
+<p>组件目录，用来存放自己需要复用或者封装的组件代码。组件要是不懂要去看一下vue官网看一下文档了，用了就是真香了。</p>
+<blockquote>
+<ul>
+<li>directive</li>
+</ul>
+</blockquote>
+<p>自定义指令目录</p>
+<blockquote>
+<p>*icons</p>
+</blockquote>
+<p>系统工具使用的图标文件，里面使用是svg的图标文件，图标文件的下载可以去阿里的图标库去下载。这里贴个地址：https://www.iconfont.cn/</p>
+<blockquote>
+<ul>
+<li>lang</li>
+</ul>
+</blockquote>
+<p>国际化使用的语言包</p>
+<blockquote>
+<ul>
+<li>mock</li>
+</ul>
+</blockquote>
+<p>模拟数据</p>
+<blockquote>
+<ul>
+<li>router</li>
+</ul>
+</blockquote>
+<p>vue路由配置模块</p>
+<blockquote>
+<ul>
+<li>store</li>
+</ul>
+</blockquote>
+<p>vuex,vue的状态管理工具，用来配置一个额外的容器存放变量</p>
+<blockquote>
+<ul>
+<li>styles</li>
+</ul>
+</blockquote>
+<p>系统的统一样式文件，在管理端这样的CMS系统里面，样式统一管理后，就不需要所有的vue文件都要一个个去敲样式，而且对于一个CMS后台管理系统来说的，大量的代码复用，样式也不例外。这样书写后写下来整个后台项目就相当的快速和舒服了。</p>
+<blockquote>
+<ul>
+<li>utils</li>
+</ul>
+</blockquote>
+<p>可以复用的一些方法，类似于配置文件，公共方法，我都习惯放置在这个模块下面，给予其他文件来引用调用</p>
+<blockquote>
+<ul>
+<li>vendor</li>
+</ul>
+</blockquote>
+<p>通常用来存放第三方库</p>
+<blockquote>
+<ul>
+<li>views</li>
+</ul>
+</blockquote>
+<p>视图层代码，普通vue文件</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/15/黑苹果折腾心得/" rel="next" title="黑苹果折腾心得">
+                <i class="fa fa-chevron-left"></i> 黑苹果折腾心得
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/16/小店开张了/" rel="prev" title="小店开张了">
+                小店开张了 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/companylogo.png" alt="义建">
+            
+              <p class="site-author-name" itemprop="name">义建</p>
+              <p class="site-description motion-element" itemprop="description">♤学习♢生活♡工作♧梦想</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huangyijan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:13415843344@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">使用vue-element-admin 写用户管理端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">1、项目初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">集成模板下载 vue-element-admin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">基础模板下载 vueAdmin-template</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">2、项目权限问题和路由页面问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">3、页面的具体操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">2019年6月19日更新</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">义建</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("UVgwPveR02fj9IfuWfPIYn3r-gzGzoHsz", "sRxJkwDH6BW7X34zSWDc9Waq");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
